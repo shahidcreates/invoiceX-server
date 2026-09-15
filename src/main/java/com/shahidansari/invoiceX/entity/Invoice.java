@@ -30,6 +30,10 @@ public class Invoice {
     @OneToOne(cascade = CascadeType.ALL)
     private InvoiceDetails invoiceDetails;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     @OneToMany(
         mappedBy = "invoice",
         cascade = CascadeType.ALL,

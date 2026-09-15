@@ -1,5 +1,6 @@
 package com.shahidansari.invoiceX.controller;
 
+import com.shahidansari.invoiceX.dto.LoginRequest;
 import com.shahidansari.invoiceX.dto.RegisterRequest;
 import com.shahidansari.invoiceX.service.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,12 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authService.register(request));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest request){
+        return ResponseEntity.ok(authService.login(request));
     }
 }
